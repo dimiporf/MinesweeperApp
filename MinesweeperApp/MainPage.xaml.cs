@@ -1,25 +1,17 @@
-﻿namespace MinesweeperApp
+﻿using Microsoft.Maui.Controls;
+using System;
+
+namespace MinesweeperApp
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private MinesweeperGame _minesweeperGame;
 
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            _minesweeperGame = new MinesweeperGame(GameGrid, 10, 10, 20);
+            _minesweeperGame.InitializeGame();
         }
     }
-
 }
